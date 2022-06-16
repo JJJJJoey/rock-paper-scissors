@@ -1,50 +1,75 @@
-const btnRock = document.createElement('button');
-const btnPaper = document.createElement('button');
-const btnScissors = document.createElement('button');
-const btnLizard = document.createElement('button');
-const btnSpock = document.createElement('button');
 
-const container = document.querySelector('.container');
+const wrapper = document.createElement('div');
+document.body.appendChild(wrapper);
+wrapper.classList.add('wrapper');
 
-
-const content = document.createElement('div');
-content.classList.add('content');
-content.textContent = 'Pick one';
-
-btnRock.style.background="url('images/rock.png')";   
-btnPaper.style.background="url('images/paper.png')";   
-btnScissors.style.background="url('images/scissors.png')";   
-btnLizard.style.background="url('images/lizard.png')";   
-btnSpock.style.background="url('images/spock.png')";   
-
-btnRock.classList.add('buttons');
-btnPaper.classList.add('buttons');
-btnScissors.classList.add('buttons');
-btnLizard.classList.add('buttons');
-btnSpock.classList.add('buttons');
-
-// btnRock.textContent = "Rock";
-// btnPaper.textContent = "Paper";
-// btnScissors.textContent = "Scissors";
-// btnLizard.textContent = "Lizard";
-// btnSpock.textContent = "Spock";
+const titleCont = document.createElement('div');
+wrapper.appendChild(titleCont);
+titleCont.classList.add('titleCont');
+titleCont.textContent = 'lets play';
 
 
-container.appendChild(content);
-container.appendChild(btnRock);
-container.appendChild(btnPaper);
-container.appendChild(btnScissors);
-container.appendChild(btnLizard);
-container.appendChild(btnSpock);
+const htBtn = document.createElement('button');
+wrapper.appendChild(htBtn);
+htBtn.classList.add('htBtn');
+htBtn.textContent = 'dont know how to play? click here';
+
+
+
+const btnContainer = document.createElement('div');
+wrapper.appendChild(btnContainer);
+btnContainer.classList.add('btnContainer');
+
+const txtCont = document.createElement('div');
+wrapper.appendChild(txtCont);
+txtCont.classList.add('txtResult');
+
+
+const scoreCont = document.createElement('div');
+wrapper.appendChild(scoreCont);
+scoreCont.classList.add('scoreTxt');
+
+
+
 
 
 let player;
 let playerScore = 0;
 let computerScore = 0;
-let i =1;
+let resultText;
+
+
 
 let number = () => Math.floor(Math.random() *4);
 const rps=["rock","paper","scissors","lizard","spock"];
+
+function playerTurn(e){
+  
+  player = e.target.textContent;
+  
+  console.log("computer plays: ",computerPlay());
+  console.log("player plays: ",player);
+  
+  result(computer,player);  
+  txtCont.textContent = resultText;
+}
+
+
+
+for(let i=0;i<=4;i++){
+  const btn = document.createElement('button');
+  btnContainer.appendChild(btn);
+  btn.classList.add('buttons');
+  btn.textContent= rps[i];
+  //btn.style.background="url('images/"+rps[i]+".png')";
+  btn.style.background=`url(/images/${rps[i]}.png)`
+
+
+  btn.addEventListener('click', playerTurn);
+  btn.addEventListener('click',score)
+  
+}
+
 
 function computerPlay(){
   const x=number();
@@ -54,90 +79,42 @@ function computerPlay(){
  
 }  
 
-
-btnRock.addEventListener('click', () =>{
-  
-  player = "rock"
-  console.log("computer plays: ",computerPlay());
-  console.log("player plays: ",player);
-  
-  result(computer,player);  
-});
-
-  
-btnPaper.addEventListener('click', () =>{
-    
-  player = "paper"
-  console.log("computer plays: ",computerPlay());
-  console.log("player plays: ",player);
-  
-  result(computer,player);  
-});
-
-btnScissors.addEventListener('click', () =>{
-    
-  player = "scissors"
-  console.log("computer plays: ",computerPlay());
-  console.log("player plays: ",player);
-  
-  result(computer,player);  
-});
-
-btnLizard.addEventListener('click', () =>{
-    
-  player = "lizard"
-  console.log("computer plays: ",computerPlay());
-  console.log("player plays: ",player);
-  
-  result(computer,player);  
-});
-
-btnSpock.addEventListener('click', () =>{
-    
-  player = "spock"
-  console.log("computer plays: ",computerPlay());
-  console.log("player plays: ",player);
-  
-  result(computer,player);  
-});
-
-console.log("FINAL SCORE","computer score: ", computerScore, "player score: ",playerScore)
-
-
-
+function score(){
+  scoreCont.textContent = "computer score: "+ computerScore+"  "+ "player score: "+playerScore;
+}
 
 
 
 
 function result(computer, player){
   
-  if (computer === player){console.log("its a tie")}
+  if (computer === player){resultText=("its a tie")}
   
-  else if(computer === "scissors" && player === "rock"){console.log("(and as it always has) Rock crushes Scissors"), playerScore++}
-  else if(computer === "rock" && player === "paper"){console.log("Paper covers Rock"), playerScore++}
-  else if(computer === "paper" && player === "scissors"){console.log("Scissors cuts Paper"), playerScore++}
+  else if(computer === "scissors" && player === "rock"){resultText="Rock crushes Scissors", playerScore++}
+  else if(computer === "rock" && player === "paper"){resultText="Paper covers Rock", playerScore++}
+  else if(computer === "paper" && player === "scissors"){resultText="Scissors cuts Paper", playerScore++}
 
-  else if(computer === "lizard" && player === "scissors"){console.log("Scissors decapitates Lizard"), playerScore++}
-  else if(computer === "lizard" && player === "rock"){console.log("Rock crushes Lizard"), playerScore++}
-  else if(computer === "spock" && player === "lizard"){console.log("Lizard poisons Spock"), playerScore++}
-  else if(computer === "scissors" && player === "spock"){console.log("Spock smashes Scissors"), playerScore++}
-  else if(computer === "paper" && player === "lizard"){console.log("Lizard eats Paper"), playerScore++}
-  else if(computer === "spock" && player === "paper"){console.log("Paper disproves Spock"), playerScore++}
-  else if(computer === "rock" && player === "spock"){console.log("Spock vaporizes Rock"), playerScore++}
+  else if(computer === "lizard" && player === "scissors"){resultText="Scissors decapitates Lizard", playerScore++}
+  else if(computer === "lizard" && player === "rock"){resultText="Rock crushes Lizard", playerScore++}
+  else if(computer === "spock" && player === "lizard"){resultText="Lizard poisons Spock", playerScore++}
+  else if(computer === "scissors" && player === "spock"){resultText="Spock smashes Scissors", playerScore++}
+  else if(computer === "paper" && player === "lizard"){resultText="Lizard eats Paper", playerScore++}
+  else if(computer === "spock" && player === "paper"){resultText="Paper disproves Spock", playerScore++}
+  else if(computer === "rock" && player === "spock"){resultText="Spock vaporizes Rock", playerScore++}
 
 
 
-  else if(computer === "rock" && player === "scissors"){console.log("(and as it always has) Rock crushes Scissors"), computerScore++}
-  else if(computer === "paper" && player === "rock"){console.log("Paper covers Rock"), computerScore++}
-  else if(computer === "scissors" && player === "paper"){console.log("Scissors cuts Paper"), computerScore++}
+  else if(computer === "rock" && player === "scissors"){resultText="Rock crushes Scissors", computerScore++}
+  else if(computer === "paper" && player === "rock"){resultText="Paper covers Rock", computerScore++}
+  else if(computer === "scissors" && player === "paper"){resultText="Scissors cuts Paper", computerScore++}
 
-  else if(computer === "scissors" && player === "lizard"){console.log("Scissors decapitates Lizard"), computerScore++}
-  else if(computer === "rock" && player === "lizard"){console.log("Rock crushes Lizard"), computerScore++}
-  else if(computer === "lizard" && player === "spock"){console.log("Lizard poisons Spock"), computerScore++}
-  else if(computer === "spock" && player === "scissors"){console.log("Spock smashes Scissors"), computerScore++}
-  else if(computer === "lizard" && player === "paper"){console.log("Lizard eats Paper"), computerScore++}
-  else if(computer === "paper" && player === "spock"){console.log("Paper disproves Spock"), computerScore++}
-  else if(computer === "spock" && player === "rock"){console.log("Spock vaporizes Rock"), computerScore++}
+  else if(computer === "scissors" && player === "lizard"){resultText="Scissors decapitates Lizard", computerScore++}
+  else if(computer === "rock" && player === "lizard"){resultText="Rock crushes Lizard", computerScore++}
+  else if(computer === "lizard" && player === "spock"){resultText="Lizard poisons Spock", computerScore++}
+  else if(computer === "spock" && player === "scissors"){resultText="Spock smashes Scissors", computerScore++}
+  else if(computer === "lizard" && player === "paper"){resultText="Lizard eats Paper", computerScore++}
+  else if(computer === "paper" && player === "spock"){resultText="Paper disproves Spock", computerScore++}
+  else if(computer === "spock" && player === "rock"){resultText="Spock vaporizes Rock", computerScore++}
   else{console.log("please enter a acceptable answer")}
 
 }
