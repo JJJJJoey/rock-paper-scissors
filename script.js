@@ -33,6 +33,8 @@ scoreCont.classList.add('scoreTxt');
 
 
 
+
+
 let player;
 let playerScore = 0;
 let computerScore = 0;
