@@ -11,17 +11,23 @@ const content = document.createElement('div');
 content.classList.add('content');
 content.textContent = 'Pick one';
 
+btnRock.style.background="url('images/rock.png')";   
+btnPaper.style.background="url('images/paper.png')";   
+btnScissors.style.background="url('images/scissors.png')";   
+btnLizard.style.background="url('images/lizard.png')";   
+btnSpock.style.background="url('images/spock.png')";   
+
 btnRock.classList.add('buttons');
 btnPaper.classList.add('buttons');
 btnScissors.classList.add('buttons');
 btnLizard.classList.add('buttons');
 btnSpock.classList.add('buttons');
 
-btnRock.textContent = "Rock";
-btnPaper.textContent = "Paper";
-btnScissors.textContent = "Scissors";
-btnLizard.textContent = "Lizard";
-btnSpock.textContent = "Spock";
+// btnRock.textContent = "Rock";
+// btnPaper.textContent = "Paper";
+// btnScissors.textContent = "Scissors";
+// btnLizard.textContent = "Lizard";
+// btnSpock.textContent = "Spock";
 
 
 container.appendChild(content);

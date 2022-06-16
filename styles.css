@@ -4,12 +4,12 @@
 }
 
 .buttons{
-    width: 100px;
-    height: 20px;
+    width: 150px;
+    height: 150px;
 }
 .container{
     display: flex;
-    flex-direction: column;
+    
 }
 body{
     display: flex;
