@@ -6,3 +6,11 @@
     display: flex;
     flex-direction: column;
 }
+img{
+    width: 300px;
+    opacity: 0;
+    transition: opacity 20ms;
+}
+img:hover{
+    opacity: 1;
+}

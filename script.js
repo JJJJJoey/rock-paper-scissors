@@ -35,7 +35,7 @@ container.appendChild(btnSpock);
 let player;
 let playerScore = 0;
 let computerScore = 0;
-let i;
+let i =1;
 
 let number = () => Math.floor(Math.random() *4);
 const rps=["rock","paper","scissors","lizard","spock"];
@@ -45,20 +45,57 @@ function computerPlay(){
   //console.log(rps[x],x);
   return  computer = rps[x]
   //console.log("computer plays: ",computer);
-  
-
+ 
 }  
 
 
-btnRock.addEventListener('click', () =>{
+  btnRock.addEventListener('click', () =>{
+    
+    player = "rock"
+    console.log("computer plays: ",computerPlay());
+    console.log("player plays: ",player);
+    
+    result(computer,player);  
+  });
   
   
-  player = "rock"
-  console.log("computer plays: ",computerPlay());
-  console.log("player plays: ",player);
+  btnPaper.addEventListener('click', () =>{
+      
+    player = "paper"
+    console.log("computer plays: ",computerPlay());
+    console.log("player plays: ",player);
+    
+    result(computer,player);  
+  });
   
-  result(computer,player);  
-});
+  btnScissors.addEventListener('click', () =>{
+      
+    player = "scissors"
+    console.log("computer plays: ",computerPlay());
+    console.log("player plays: ",player);
+    
+    result(computer,player);  
+  });
+  
+  btnLizard.addEventListener('click', () =>{
+      
+    player = "lizard"
+    console.log("computer plays: ",computerPlay());
+    console.log("player plays: ",player);
+    
+    result(computer,player);  
+  });
+  
+  btnSpock.addEventListener('click', () =>{
+      
+    player = "spock"
+    console.log("computer plays: ",computerPlay());
+    console.log("player plays: ",player);
+    
+    result(computer,player);  
+  });
+
+console.log("FINAL SCORE","computer score: ", computerScore, "player score: ",playerScore)
 
 
 
@@ -68,13 +105,8 @@ btnRock.addEventListener('click', () =>{
 
 function result(computer, player){
   
-  if (computer === "rock" && player === "rock"){console.log("its a tie")}
-  else if(computer === "paper" && player === "paper"){console.log("its a tie")}
-  else if(computer === "scissors" && player === "scissors"){console.log("its a tie")}
-  else if(computer === "lizard" && player === "lizard"){console.log("its a tie")}
-  else if(computer === "spock" && player === "spock"){console.log("its a tie")}
+  if (computer === player){console.log("its a tie")}
   
-
   else if(computer === "scissors" && player === "rock"){console.log("(and as it always has) Rock crushes Scissors"), playerScore++}
   else if(computer === "rock" && player === "paper"){console.log("Paper covers Rock"), playerScore++}
   else if(computer === "paper" && player === "scissors"){console.log("Scissors cuts Paper"), playerScore++}
@@ -100,14 +132,11 @@ function result(computer, player){
   else if(computer === "lizard" && player === "paper"){console.log("Lizard eats Paper"), computerScore++}
   else if(computer === "paper" && player === "spock"){console.log("Paper disproves Spock"), computerScore++}
   else if(computer === "spock" && player === "rock"){console.log("Spock vaporizes Rock"), computerScore++}
-  else{console.log("please enter a acceptable answer"),i--}
+  else{console.log("please enter a acceptable answer")}
 
 }
 
 
-  
-
-  
   //let player = prompt("please type rock paper or scissors");
   
   
@@ -117,7 +146,7 @@ function result(computer, player){
   //console.log("computer score: ", computerScore, "player score: ",playerScore, "you have played ",i,"rounds")
 
 
-//console.log("FINAL SCORE","computer score: ", computerScore, "player score: ",playerScore)
+
 //if(computerScore>playerScore){console.log("computer wins!")}
 //else if(computerScore<playerScore){console.log("you win!")}
 //else{"it's a tie"}
