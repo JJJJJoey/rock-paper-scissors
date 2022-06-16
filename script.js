@@ -49,51 +49,51 @@ function computerPlay(){
 }  
 
 
-  btnRock.addEventListener('click', () =>{
-    
-    player = "rock"
-    console.log("computer plays: ",computerPlay());
-    console.log("player plays: ",player);
-    
-    result(computer,player);  
-  });
+btnRock.addEventListener('click', () =>{
   
+  player = "rock"
+  console.log("computer plays: ",computerPlay());
+  console.log("player plays: ",player);
   
-  btnPaper.addEventListener('click', () =>{
-      
-    player = "paper"
-    console.log("computer plays: ",computerPlay());
-    console.log("player plays: ",player);
-    
-    result(computer,player);  
-  });
+  result(computer,player);  
+});
+
   
-  btnScissors.addEventListener('click', () =>{
-      
-    player = "scissors"
-    console.log("computer plays: ",computerPlay());
-    console.log("player plays: ",player);
+btnPaper.addEventListener('click', () =>{
     
-    result(computer,player);  
-  });
+  player = "paper"
+  console.log("computer plays: ",computerPlay());
+  console.log("player plays: ",player);
   
-  btnLizard.addEventListener('click', () =>{
-      
-    player = "lizard"
-    console.log("computer plays: ",computerPlay());
-    console.log("player plays: ",player);
+  result(computer,player);  
+});
+
+btnScissors.addEventListener('click', () =>{
     
-    result(computer,player);  
-  });
+  player = "scissors"
+  console.log("computer plays: ",computerPlay());
+  console.log("player plays: ",player);
   
-  btnSpock.addEventListener('click', () =>{
-      
-    player = "spock"
-    console.log("computer plays: ",computerPlay());
-    console.log("player plays: ",player);
+  result(computer,player);  
+});
+
+btnLizard.addEventListener('click', () =>{
     
-    result(computer,player);  
-  });
+  player = "lizard"
+  console.log("computer plays: ",computerPlay());
+  console.log("player plays: ",player);
+  
+  result(computer,player);  
+});
+
+btnSpock.addEventListener('click', () =>{
+    
+  player = "spock"
+  console.log("computer plays: ",computerPlay());
+  console.log("player plays: ",player);
+  
+  result(computer,player);  
+});
 
 console.log("FINAL SCORE","computer score: ", computerScore, "player score: ",playerScore)
 
